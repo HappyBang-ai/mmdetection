@@ -1,5 +1,7 @@
 _base_ = './htc_without_semantic_r50_fpn_1x_coco.py'
+"""
 model = dict(
+   
     roi_head=dict(
         semantic_roi_extractor=dict(
             type='SingleRoIExtractor',
@@ -16,9 +18,12 @@ model = dict(
             num_classes=183,
             ignore_label=255,
             loss_weight=0.2)))
-data_root = 'data/coco/'
+            """
+            
+data_root = 'data/Aset/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
+    
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
@@ -50,7 +55,8 @@ test_pipeline = [
 ]
 data = dict(
     train=dict(
-        seg_prefix=data_root + 'stuffthingmaps/train2017/',
+        seg_prefix=data_root + 'train/',
         pipeline=train_pipeline),
     val=dict(pipeline=test_pipeline),
     test=dict(pipeline=test_pipeline))
+  
